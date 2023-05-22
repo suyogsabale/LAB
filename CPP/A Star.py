@@ -14,7 +14,7 @@ def aStarAlgo(start_node, stop_node):
  
             #node with lowest f() is found
             for v in open_set:   # for every node in openset find node with lowest g value
-                if fn == None or g[v] + heuristic(v) < g[fn] + heuristic(fn):                   # TRAVERSE OPEN SET ,,, GET FN== V WITH LOWEST F() VALUE 
+                if fn == None or g[v] + heuristic(v) < g[fn] + heuristic(fn):              # TRAVERSE OPEN SET ,,, GET FN== V WITH LOWEST F() VALUE 
                     fn = v      
              
                      
@@ -32,8 +32,8 @@ def aStarAlgo(start_node, stop_node):
      
                     #for each node m,compare its distance from start i.e g(m) to the
                     #from start through n node
-                    else:                                                               # if neb is present in any (already visited/calculated) then compare new g value and neb's g value
-                        if g[nb] > g[fn] + weight:                                      #    update if new g val of neb is small , update parent of neb=fn 
+                    else:                                  # if neb is present in any (already visited/calculated) then compare new g value and neb's g value
+                        if g[nb] > g[fn] + weight:         #    update if new g val of neb is small , update parent of neb=fn 
                             #update g(m)
                             g[nb] = g[fn] + weight
                             #change parent of m to n
@@ -41,27 +41,27 @@ def aStarAlgo(start_node, stop_node):
                              
                            
                             if nb in closed_set:
-                                closed_set.remove(nb)                               #if neb is in closed set,remove from close and add to open ....as it comes to new path
+                                closed_set.remove(nb)            #if neb is in closed set,remove from close and add to open ....as it comes to new path
                                 open_set.add(nb)
                                     
                                         
                                              #checked every neb and exited
-            if fn == None:                                                          # if fn has no connection/child/branch then exit prog
+            if fn == None:                                      # if fn has no connection/child/branch then exit prog
                 print('Path does not exist!')
                 return None
  
             # if the current node is the stop_node
             # then we begin reconstructin the path from it to the start_node
-            if fn == stop_node:                                                                 #if goal node found ,,, start creating final path using array
+            if fn == stop_node:                                #if goal node found ,,, start creating final path using array
                 path = []
  
-                while parents[fn] != fn:                                                                # append the node in path untill self parent is encounterderd
+                while parents[fn] != fn:                           # append the node in path untill self parent is encounterderd
                     path.append(fn)
                     fn = parents[fn]                                                                    
  
-                path.append(start_node)                                                                 # append start as it exited from loop 
+                path.append(start_node)                            # append start as it exited from loop 
     
-                path.reverse()                                                                          # GCBA====ABCG
+                path.reverse()                                     # GCBA====ABCG
  
                 print('Path found: {}'.format(path))
                 return path
@@ -69,7 +69,7 @@ def aStarAlgo(start_node, stop_node):
  
             # remove fn from the open_list, and add it to closed_list
             # because all of his neighbors were inspected
-            open_set.remove(fn)                                                                     # visited fn , hence add it in closed and remove from open
+            open_set.remove(fn)                                         # visited fn , hence add it in closed and remove from open
             closed_set.add(fn)
                     
         print('Path does not exist!')
@@ -85,19 +85,12 @@ def get_neighbors(v):
 #for simplicity we ll consider heuristic distances given
 #and this function returns heuristic distance for all nodes
 def heuristic(n):
-        H_dist = {
-            'A': 8,
-            'B': 5,
-            'C': 4,
-            'G': 0,
-             
-        }
- 
         return H_dist[n]
  
 #Describe your graph here  
 
 Graph_nodes = { }
+H_dist={ }
 n=int(input("Enter the Number of Node "))
 start=input("Enter the start Node:-")
 goal=input("Enter the goal Node:-")
@@ -105,6 +98,8 @@ goal=input("Enter the goal Node:-")
 for i in range(1,n+1):
     node=input("Enter the Node ")
     print("Node :",node)
+    hd=int(input("Enter the Heuristic value:"))
+    H_dist[node]=hd
     array=[]
     adn=int(input("Enter the number of Adjacent node for "+node))
     print("AD Node :",adn)

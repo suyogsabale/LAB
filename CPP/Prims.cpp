@@ -2,7 +2,7 @@
 using namespace std;
 
 int main() {
-	int n, i, j, k, row, col, mincost=0, min;
+	int n, i, j, k, row, col, mincost=0, min,ed,v1,v2;
 	char op;
 	cout<<"Enter no. of vertices: ";
 	cin>>n;
@@ -16,20 +16,23 @@ int main() {
         for(int j=0; j<n; j++)
             cost[i][j] = -1;
 
-    for(i=0; i<n; i++)
+
+    cout<<"\nEnter the no of edges:- "<<endl;
+    cin>>ed;
+    
+    for(i=0;i<ed;i++)
     {
-        for(j=i+1; j<n; j++)
-        {
-            cout<<"Do you want an edge between "<<i+1<<" and "<<j+1<<"(Y/N): ";
-            cin>>op;
-            if(op=='y' || op=='Y')
-            {
-                cout<<"Enter weight: ";
-                cin>>cost[i][j];
-                cost[j][i] = cost[i][j];
-            }
-        }
+        cout<<"\nEnter the v1 of edge "<<i+1;
+        cin>>v1;
+        cout<<"\nEnter the v2 of edge "<<i+1;
+        cin>>v2;
+        
+        cout<<"\nEnter weight"<<endl;
+        cin>>cost[v1-1][v2-1];
+        cost[v2-1][v1-1]=cost[v1-1][v2-1];
+        
     }
+    
 		visit[0] = 1;
 		for(k=0; k<n-1; k++)
         {
@@ -57,7 +60,3 @@ int main() {
 		cout<<"\nMin. Cost: "<<mincost;
 	return 0;
 }
-
-
-
-
