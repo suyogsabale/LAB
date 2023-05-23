@@ -60,14 +60,19 @@ class Graph:
 
 
 # Take input from the user
-V = int(input("Enter the number of vertices in the graph: "))
-g = Graph(V)
+n = int(input("Enter the number of vertices in the graph: "))
+g = Graph(n)
 
 E = int(input("Enter the number of edges in the graph: "))
 print("Enter the edges and weights in the format (u, v, weight):")
-for _ in range(E):
-    u, v, weight = map(int, input().split())
-    g.addEdge(u, v, weight)
+for z in range(E):
+    # u, v, weight = map(int, input().split())
+    # g.add_edge(u, v, weight)
+
+    a=int(input("Enter the src of edge"+ str(z)))
+    b=int(input("Enter the dest of edge"+ str(z)))
+    c=int(input("Enter the weight of edge"+ str(z)))
+    g.add_edge(a,b,c)
     
 # Apply Kruskal's algorithm and print the resulting minimum spanning tree
 g.kruskal_algo()
