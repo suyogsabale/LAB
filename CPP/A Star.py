@@ -95,7 +95,7 @@ n=int(input("Enter the Number of Node "))
 start=input("Enter the start Node:-")
 goal=input("Enter the goal Node:-")
 
-for i in range(1,n+1):
+for i in range(1,n+1):                  #.////1 ,n+1
     node=input("Enter the Node ")
     print("Node :",node)
     hd=int(input("Enter the Heuristic value:"))
