@@ -1,60 +1,60 @@
-def add_emp(emps):
-    emp_id = input("Enter employee ID: ")
-    name = input("Enter employee name: ")
-    skills = {}
-    total_score=0
-    num_skills = int(input("Enter the number of skills: "))
-    for i in range(num_skills):
-        skill_name = input(f"Enter skill #{i + 1} name: ")
-        skill_rating = int(input(f"Enter skill #{i + 1} rating (0-100): "))
-        skills[skill_name] = skill_rating
-        total_score +=skill_rating
-    score=total_score/num_skills
-    if score >=90:
-        grade="A"
-    elif score >=80:
-        grade="B"
-    elif score >=70:
-        grade="C"
-    elif score >=60:
-        grade="D"
+def find(parent,i):
+    if parent[i]==i:
+        return i
+    return find(parent,parent[i])
+
+def apply_union(parent,rank,x,y):
+    xroot=find(parent,x)
+    yroot=find(parent,y)
+
+    if rank[xroot]>rank[yroot]:
+        parent[yroot]=xroot
+    elif rank[yroot]<rank[xroot]:
+        parent[xroot]=yroot
     else:
-        grade="F"
-    emps.append({"Emp_id":emp_id,"Name":name,"Skills":skills,"Score":score,"Grade":grade})
-    print("emp added successfully!")
+        parent[xroot]=yroot
+        rank[xroot]+=1
+    
+    
 
-def view_emps(emps):
-        if not emps:
-            print("No employees available.")
-            return
-        else:
-            print("Employee Performance:")
-            for emp in emps:
-                print("Employee ID:",emp["Emp_id"])
-                print("Name:",emp["Name"])
-                print("Skills: ",emp["Skills"])
-                print("Performance Score:",emp["Score"])
-                print("Grade:",emp["Grade"])
-                print("-------------------------")
-def main():
-    emps=[]
-    while True:
-        print("\n--- Employee Performance Evaluation System ---")
-        print("1. Add an employee")
-        print("2. Evaluate employee performance and display")
-        print("3. Exit")
+def kruskal_algo(graph,n):
+    result=[]
+    i=0
+    e=0
+    rank=[]
+    parent=[]
 
-        choice = input("Enter your choice (1-4): ")
+    graph=sorted(graph,key=lambda item:item[2])
 
-        if choice == "1":
-            add_emp(emps)
-        elif choice == "2":
-            view_emps(emps)
-        elif choice == "3":
-            print("Exiting the program...")
-            break
-        else:
-            print("Invalid choice. Please try again.")
+    for node in range(n):
+        parent.append(node)
+        rank.append(0)
+    while e<n-1:
+        u,v,w=graph[i]
+        
+        i=i+1
+        
+        x=find(parent,u)
+        y=find(parent,v)
 
-if __name__ == "__main__":
-    main()
+        if x!=y:
+            result.append([u,v,w])
+            e=e+1
+            apply_union(parent,rank,x,y)
+    for u,v,w in result:
+        print("%d -> %d :: %d"%(u,v,w))
+
+
+
+n=int(input("Enter no of verticess"))
+e=int(input("Enterenno of edges"))
+
+graph=[]
+
+for z in range(e):
+    u=int(input("Enter the src of edge"+ str(z)))
+    v=int(input("Enter the dest of edge"+ str(z)))
+    w=int(input("Enter the weight of edge"+ str(z)))
+    graph.append([u, v, w])
+
+kruskal_algo(graph,n)

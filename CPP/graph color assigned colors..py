@@ -13,7 +13,7 @@ def aStarAlgo(start_node, stop_node):
             fn = None
  
             #node with lowest f() is found
-             for v in open_set:   # for every node in openset find node with lowest g value
+            for v in open_set:   # for every node in openset find node with lowest g value
                 if fn == None or g[v] + heuristic(v) < g[fn] + heuristic(fn):                   # TRAVERSE OPEN SET ,,, GET FN== V WITH LOWEST F() VALUE 
                     fn = v      
              
