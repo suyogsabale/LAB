@@ -53,7 +53,7 @@ int main() {
 			}
 			mincost += min;												//accumalte min to find minimal cost		
 			visit[col] = 1;												//mark col/j visited
-			cost[row][col] = cost[col][row] = -1;						//delete the edge weight from both vertices
+			cost[row][col] = cost[col][row] = -1;/////////////////////////delete the edge weight from both vertices
 			cout<<row+1<<"->"<<col+1<<endl;								//print in vertices in human count
 		}
 		cout<<"\nMin. Cost: "<<mincost;

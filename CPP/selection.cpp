@@ -18,10 +18,7 @@ void selectionSort(int *array, int n) {
             min = j;
         }   
       }
-      int temp;
-      temp=array[i];
-      array[i]=array[min];
-      array[min]=temp;
+      swap(array[min],array[i]);
    }
 }
 int main() {
@@ -38,4 +35,6 @@ int main() {
    selectionSort(arr, n);
    cout << "Array after Sorting: ";
    display(arr, n);
+   return 0;
 }
+

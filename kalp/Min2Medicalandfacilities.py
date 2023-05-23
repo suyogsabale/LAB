@@ -20,7 +20,6 @@ def search_patient(patients):
     if not found:
         print("Patient not found.")
 
-
 def display_all_patients(patients):
     if not patients:
         print("No patients found.")
@@ -43,7 +42,6 @@ def predict_disease():
         "fatigue": ["chronic fatigue syndrome", "anemia", "hypothyroidism"],
         "abdominal pain": ["appendicitis", "gastritis", "gallstones"],
         "rash": ["allergic reaction", "eczema", "psoriasis"],
-        # Add more symptom-disease mappings as needed
     }
 
     predicted_diseases = []
