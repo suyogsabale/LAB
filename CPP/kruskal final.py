@@ -35,6 +35,7 @@ def kruskal_algo(graph,n):
     for node in range(n):
         parent.append(node)  # Initialize each node -----par[i]=i    self parent as a separate subset
         rank.append(0)  # Initialize rank of each subset as 0
+        
     while e < n - 1:                            #untill n-1 edges are added to result
         u, v, w = graph[i]  # Pick the smallest edge
         i = i + 1
