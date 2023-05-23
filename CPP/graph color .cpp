@@ -67,7 +67,7 @@ int main() {
 
     vector<vector<int>> graph(nv, vector<int>(nv));
     cout << "Enter the adjacency matrix for the graph:\n";
-    for (int i = 0; i < nv; i++) {
+    for (int i = 0; i < nv; i++) {      
         for (int j = 0; j < nv; j++) {
             cin >> graph[i][j];
         }
