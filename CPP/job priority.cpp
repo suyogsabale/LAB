@@ -10,7 +10,7 @@ struct Job {
     int burstTime;
     int priority;
 
-    Job(int id, int burst, int prio) : jobId(id), burstTime(burst), priority(prio) {}
+    // Job(int id, int burst, int prio) : jobId(id), burstTime(burst), priority(prio) {}
 };
 
 // Function to compare jobs based on their priority
@@ -58,7 +58,8 @@ int main() {
         cin >> burstTime;
         cout << "Priority: ";
         cin >> priority;
-        jobs.push_back(Job(jobId, burstTime, priority));
+        // jobs.push_back(Job(jobId, burstTime, priority));
+        jobs.push_back({jobId, burstTime, priority});
     }
 
     cout << "Job Scheduling Results:" << endl;
